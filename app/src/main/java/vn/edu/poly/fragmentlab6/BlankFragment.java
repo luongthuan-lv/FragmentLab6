@@ -18,24 +18,29 @@ public class BlankFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
         // khai layout cho fragment
         return inflater.inflate(R.layout.fragment_blank, container, false);
     }
 
 
-        // xử lý các sự kiện tại đây
+    // xử lý các sự kiện tại đây
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
 
+        final TextView tvFragment = view.findViewById(R.id.tvFragment);
+        if (getArguments() != null) {
+            String chuoi = getArguments().get("Doiso").toString();
+            tvFragment.setText(chuoi);
+        }
 
-        final TextView tvFragment=view.findViewById(R.id.tvFragment);
-        tvFragment.setText("Hello");
         tvFragment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(),tvFragment.getText(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), tvFragment.getText(), Toast.LENGTH_SHORT).show();
             }
         });
 
